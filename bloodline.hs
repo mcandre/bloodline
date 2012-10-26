@@ -19,7 +19,7 @@ nameSelect name = do
 
 	let nameLangLit = (name ++ " (programming language)", "en")
 
-	-- triple programmingLanguage (rdf .:. "type") (dbpediaOwl .:. "ProgrammingLanguage")
+	triple programmingLanguage (rdf .:. "type") (dbpediaOwl .:. "ProgrammingLanguage")
 	triple programmingLanguage (rdfs .:. "label") nameLangLit
 
 	return SelectQuery { queryVars = [programmingLanguage] }
@@ -36,6 +36,7 @@ influencedBySelect name = do
 
 	let nameLangLit = (name ++ " (programming language)", "en")
 
+	triple programmingLanguage (rdf .:. "type") (dbpediaOwl .:. "ProgrammingLanguage")
 	triple programmingLanguage (rdfs .:. "label") nameLangLit
 	triple programmingLanguage (dbpediaOwl .:. "influencedBy") influencedBy
 
@@ -53,6 +54,7 @@ influencedSelect name = do
 
 	let nameLangLit = (name ++ " (programming language)", "en")
 
+	triple programmingLanguage (rdf .:. "type") (dbpediaOwl .:. "ProgrammingLanguage")
 	triple programmingLanguage (rdfs .:. "label") nameLangLit
 	triple programmingLanguage (dbpediaOwl .:. "influenced") influenced
 
