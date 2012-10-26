@@ -85,7 +85,16 @@ langChildren name = do
 
 main :: IO ()
 main = do
-	-- results <- langResource "D"
-	-- results <- langParents "D"
-	results <- langChildren "D"
-	putStrLn $ "Results: " ++ results
+	let language = "D"
+
+	resource <- langResource language
+
+	putStrLn $ "Resource: " ++ resource ++ "\n"
+
+	parents <- langParents language
+
+	putStrLn $ "Parents: " ++ parents ++ "\n"
+
+	children <- langChildren language
+
+	putStrLn $ "Children: " ++ children
