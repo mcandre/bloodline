@@ -6,6 +6,8 @@ import Database.HSparql.QueryGenerator
 import Data.RDF hiding (triple)
 import Data.RDF.TriplesGraph
 
+import Data.Text (pack, unpack, stripPrefix, stripSuffix)
+
 nameSelect :: String -> Query SelectQuery
 nameSelect name = do
 	rdf <- prefix "rdf" (iriRef "http://www.w3.org/1999/02/22-rdf-syntax-ns#")
@@ -68,20 +70,27 @@ unbind results = case results of
 	Nothing -> []
 	Just results' -> map catBounds results'
 
+resourceToName :: Node -> String
+resourceToName (UNode s) = case stripPrefix (pack "http://dbpedia.org/resource/") s of
+	Just s' -> case stripSuffix (pack "_(programming_language)") s' of
+		Just s'' -> unpack s''
+		_ -> unpack s'
+	_ -> unpack s
+
 langResource :: String -> IO String
 langResource name = do
 	results <- selectQuery dbpediaEndpoint (nameSelect name)
-	return $ show $ unbind results
+	return $ resourceToName $ head $ concat $ unbind results
 
 langParents :: String -> IO String
 langParents name = do
 	results <- selectQuery dbpediaEndpoint (influencedBySelect name)
-	return $ show $ unbind results
+	return $ show $ map resourceToName $ concat $ unbind results
 
 langChildren :: String -> IO String
 langChildren name = do
 	results <- selectQuery dbpediaEndpoint (influencedSelect name)
-	return $ show $ unbind results
+	return $ show $ map resourceToName $ concat $ unbind results
 
 main :: IO ()
 main = do
