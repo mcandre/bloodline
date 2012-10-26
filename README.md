@@ -7,7 +7,11 @@
 # EXAMPLE
 
 	$ ./bloodline.hs 
-	Results: Just [[Bound UNode("http://dbpedia.org/resource/D_(programming_language)")]]
+	Resource: D
+
+	Parents: ["Eiffel","C_Sharp","C++","Ruby","Java","C","Python"]
+
+	Children: ["Qore","MiniD","Vala","DScript"]
 
 # REQUIREMENTS
 
