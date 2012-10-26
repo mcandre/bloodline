@@ -73,9 +73,9 @@ unbind results = case results of
 resourceToName :: Node -> String
 resourceToName (UNode s) = case stripPrefix (pack "http://dbpedia.org/resource/") s of
 	Just s' -> case stripSuffix (pack "_(programming_language)") s' of
-		Just s'' -> unpack s''
-		_ -> unpack s'
-	_ -> unpack s
+		Just s'' -> unpack s'' -- strip suffix and prefix
+		_ -> unpack s' -- strip prefix
+	_ -> unpack s -- strip nothing
 
 langResource :: String -> IO String
 langResource name = do
