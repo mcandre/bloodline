@@ -6,11 +6,8 @@
 
 # EXAMPLE
 
-	$ make
-	runhaskell bloodline.hs --depth 3 --lang Haskell > bloodline.dot
-	dot -Tpdf bloodline.dot > bloodline-intermediate.pdf
-	pdflatex bloodline
-	$(OPEN) bloodline.pdf
+	$ ./bloodline.hs 
+	Results: Just [[Bound UNode("http://dbpedia.org/resource/D_(programming_language)")]]
 
 # REQUIREMENTS
 

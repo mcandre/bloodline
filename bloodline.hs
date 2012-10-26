@@ -15,13 +15,10 @@ nameSelect name = do
 
 	programmingLanguage <- var
 
-	let
-		name' = name ++ " (programming language)"
-		naturalLanguage = "en"
-		name'' = (name', naturalLanguage)
+	let nameLangLit = (name ++ " (programming language)", "en")
 
 	triple programmingLanguage (rdf .:. "type") (dbpediaOwl .:. "ProgrammingLanguage")
-	triple programmingLanguage (rdfs .:. "label") name''
+	triple programmingLanguage (rdfs .:. "label") nameLangLit
 
 	return SelectQuery { queryVars = [programmingLanguage] }
 
