@@ -1,9 +1,5 @@
 # bloodline - Trace the lineages of your favorite programming languages
 
-## HOMEPAGE
-
-[http://www.yellosoft.us/bloodline](http://www.yellosoft.us/bloodline)
-
 # EXAMPLE
 
 	$ ./bloodline.hs 
